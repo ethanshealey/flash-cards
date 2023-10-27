@@ -15,7 +15,6 @@ const CurrentCard = ({ card, flip, setFlip }: CurrentCardType) => {
             <div className="front"><h1>{ card?.front }</h1></div>
             <div className="back">
               <h1>{ card?.back }</h1>
-              <p>{ card?.subBack }</p>
             </div>
         </div>
     </div>
