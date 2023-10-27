@@ -83,16 +83,16 @@ html, body {
             }
         }
     }
-    &::before {
-        border-radius: 100%;
-        width: 150vw;
-        left: -25vw;
-        height: 150px;
-        position: absolute;
-        background: $primary;
-        content: '';
-        z-index: 10;
-      }
+    // &::before {
+    //     border-radius: 100%;
+    //     width: 150vw;
+    //     left: -25vw;
+    //     height: 150px;
+    //     position: absolute;
+    //     background: $primary;
+    //     content: '';
+    //     z-index: 10;
+    //   }
 }
 
 #menu-btn-dropdown {
