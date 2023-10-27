@@ -1,0 +1,110 @@
+@import 'variables.scss';
+
+// tablet
+@media only screen and (max-width: 910px) {
+    #welcome-billboard {
+        flex-direction: column !important;
+        h1 {
+            font-size: 30px !important;
+        }
+        img {
+            width: 80% !important;
+        }
+    }
+    #profile {
+        justify-content: center !important;
+        align-items: center;
+        width: 100% !important;
+    }
+    #profile-header, #profile-content {
+        width: 100% !important;
+    }
+    #add-header {
+        flex-direction: column !important;
+        .add-header-btns {
+            margin-bottom: 25px !important;
+        }
+    }
+}
+
+// phone
+@media only screen and (max-width: 600px) {
+    body, html {
+        width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+    #header {
+        width: 100% !important;
+        overflow: hidden !important;
+        span {
+            visibility: hidden !important;
+        }
+        &::before {
+            display: none !important;
+        }
+    }
+    .deck-list {
+        justify-content: center !important;
+    }
+    #public-decks {
+        padding-bottom: 25px !important;
+    }
+    
+    #details {
+        flex-direction: column !important;
+        overflow-x: hidden !important;
+    }
+    #profile-content {
+        padding: 10px !important;
+    }
+    #menu-btn-dropdown {
+        width: 175px !important;
+        .menu-btn-dropdown-item {
+            width: 100% !important;
+        }
+    }
+    #email {
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        h4:nth-child(2) {
+            margin-top: -15px !important;
+            margin-left: 0 !important;
+        }
+    }
+    #add {
+        width: 90vw !important;
+    }
+    .container {
+        width: 90vw !important;
+    }
+    .progress {
+        width: 90vw !important;
+        display: flex !important;
+        justify-content: center !important;
+        progress {
+            width: 98% !important;
+        }
+    }
+    .controls {
+        width: 90vw !important;
+    }
+}
+
+// small phone
+@media only screen and (max-width: 600px) {
+    .add-header-btns {
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 90vw !important;
+        .radio-inputs {
+            margin-bottom: 15px !important;
+            width: 100% !important;
+        }
+        button {
+            width: 100% !important;
+            margin-left: -0px !important;
+        }
+    }
+}
