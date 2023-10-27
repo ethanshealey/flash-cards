@@ -97,7 +97,7 @@ html, body {
 
 #menu-btn-dropdown {
     position: absolute;
-    width: 150px;
+    width: 175px;
     height: auto;
     background-color: $secondary;
     top: 85px;
@@ -114,7 +114,7 @@ html, body {
         background-color: $secondary !important;
         z-index: 1;
         text-decoration: none;
-        width: 120px;
+        width: 100%;
         height: 5px;
         display: flex;
         flex-direction: row;
