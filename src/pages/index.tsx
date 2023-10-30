@@ -38,7 +38,7 @@ export default function Home({ user }: HomeType) {
       <Header user={user} />
       <main id="welcome-billboard">
         <h1>Welcome { user ? 'back to your' : 'to your new' }<br />favorite place for<br /><span className='accent'>Flash Cards</span>!</h1>
-        <img src="./study.svg" />
+        <img src="./study-2.svg" style={{ transform: 'rotateY(180deg)' }} />
       </main>
       {
         user && (
