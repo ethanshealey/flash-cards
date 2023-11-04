@@ -28,7 +28,7 @@ const DeckHeader = ({ user, title }: DeckHeaderType) => {
                             <Link className="menu-btn-dropdown-item" href="/profile"><BiSolidUser /> Account</Link>
                             {/* <Link className="menu-btn-dropdown-item" href="/"><PiCardsBold /> Your Decks</Link> */}
                             <Link className="menu-btn-dropdown-item" href="/create"><MdOutlineCreate /> Create Deck</Link>
-                            <Link className="menu-btn-dropdown-item" href="/"><BiSearchAlt2 /> Search</Link>
+                            <Link className="menu-btn-dropdown-item" href="/search"><BiSearchAlt2 /> Search</Link>
                             <hr />
                             <Link className="menu-btn-dropdown-item warn-text" href="/logout"><MdLogout style={{ transform: 'rotate(180deg)' }} /> Sign Out</Link>
                         </> : <>
