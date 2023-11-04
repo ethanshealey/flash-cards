@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/firebase';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 type LoginType = {
     user: any
@@ -17,11 +18,27 @@ const login = ({ user }: LoginType) => {
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
 
-    const handleLogin = () => {
+    const onLogin = () => {
         signInWithEmailAndPassword(auth, email, password).then((res) => {
+            toast.success('Logged in',
+            {
+              style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },
+            })
             push('/')
         }).catch(e => {
-            console.log(e)
+            toast.error(e.message,
+            {
+              style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },
+            })
+            console.log(e.message)
         })
     }
 
@@ -40,7 +57,7 @@ const login = ({ user }: LoginType) => {
                         <input placeholder='password' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                     </fieldset>
                     <fieldset>
-                        <button onClick={handleLogin}>Log In</button>
+                        <button onClick={onLogin}>Log In</button>
                         <p>Don't have an account?<br /><Link href="/register">Make one now!</Link></p>
                     </fieldset>
                 </div>

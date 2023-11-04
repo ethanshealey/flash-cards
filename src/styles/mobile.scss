@@ -45,6 +45,9 @@
     }
     .deck-list {
         justify-content: center !important;
+        .deck-list-item {
+            flex-grow: 1;
+        }
     }
     #public-decks {
         padding-bottom: 25px !important;
@@ -88,6 +91,9 @@
     }
     .controls {
         width: 90vw !important;
+    }
+    .add-item {
+        flex-grow: 1;
     }
 }
 

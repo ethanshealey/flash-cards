@@ -9,6 +9,7 @@ import { decode } from '@/helpers/base64'
 import Deck from '@/types/Deck';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
+import toast from 'react-hot-toast';
 
 type CreateType = {
     user: any
@@ -71,6 +72,14 @@ const create = ({ user } : CreateType) => {
         title: title,
         public: publicPrivate
       }).then(() => {
+        toast.success('Deck created!',
+            {
+              style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },
+            })
         push(`deck?id=${deckId}`)
       })
     }
