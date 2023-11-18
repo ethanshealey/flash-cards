@@ -196,7 +196,7 @@ html, body {
     justify-content: center;
     align-items: center;
     background-color: $primary;
-    border-radius: 0 0 15% 0;
+    border-radius: 0 0 2.5vw 0;
     h1 {
         font-weight: 900;
         font-size: 16px;
@@ -208,6 +208,24 @@ html, body {
         margin-left: -25px;
         z-index: 2;
     }
+}
+
+#content {
+    background-color: $secondary;
+    border: 1px solid transparent;
+    border-radius: 2.5vw;
+    position: relative;
+    z-index: 1;
+}
+
+#curve {
+    position: absolute;
+    background-color: $primary;
+    height: 5vw;
+    width: 5vw;
+    float: right;
+    left: 0;
+    z-index: 0;
 }
 
 #public-decks, #user-decks {
@@ -831,3 +849,68 @@ button:disabled {
   @-webkit-keyframes spin {
     to { -webkit-transform: rotate(360deg); }
   }
+
+#search-wrapper {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: scroll;
+    height: 100vh;
+    bottom: 0;
+    #search {
+        height: auto;
+        background-color: $secondary;
+        width: calc(60vw - 50px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        color: $text;
+        font-family: $font;
+        #search-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+        #search-bar {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            
+            input {
+                border: none;
+                color: $text;
+                background-color: $bg;
+                border-radius: 5px 0 0 5px;
+                padding: 10px;
+                font-weight: 700;
+                font-family: $font;
+                flex-grow: 1;
+            }
+            button {
+                border-radius: 0 5px 5px 0;
+                height: 40px;
+                width: 75px;
+                background-color: $accent;
+                color: $text;
+                border: none;
+                font-family: $font;
+                font-weight: 700;
+                cursor: pointer;
+                transition: .25s;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50px;
+                svg {
+                    font-size: 20px;
+                }
+                &:hover {
+                    opacity: 85%;
+                }
+            }
+        } 
+    }
+}

@@ -40,17 +40,20 @@ export default function Home({ user }: HomeType) {
         <h1>Welcome { user ? 'back to your' : 'to your new' }<br />favorite place for<br /><span className='accent'>Flash Cards</span>!</h1>
         <img src="./study-2.svg" style={{ transform: 'rotateY(180deg)' }} />
       </main>
-      {
-        user && (
-          <div id="user-decks">
-            <h1>Your Decks</h1>
-            <DeckList decks={userDecks} haveAddButton />
-          </div>
-        )
-      }
-      <div id="public-decks">
-        <h1>Check out some Public Decks</h1>
-        <DeckList decks={publicDecks} />
+      <div id="curve" />
+      <div id="content">
+        {
+          user && (
+            <div id="user-decks">
+              <h1>Your Decks</h1>
+              <DeckList decks={userDecks} haveAddButton />
+            </div>
+          )
+        }
+        <div id="public-decks">
+          <h1>Check out some Public Decks</h1>
+          <DeckList decks={publicDecks} />
+        </div>
       </div>
     </div>
   )
