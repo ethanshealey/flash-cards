@@ -2,7 +2,7 @@
 import { db } from '@/firebase'
 import { collection, getDocs, or, query, where } from 'firebase/firestore'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import * as lunr from 'lunr'
+import lunr from 'lunr'
 
 type Data = {
     response: string
