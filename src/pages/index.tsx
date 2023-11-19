@@ -14,7 +14,7 @@ export default function Home({ user }: HomeType) {
   const [ userDecks, setUserDecks ] = useState<Deck[]>([])
 
   useEffect(() => {
-    fetch('/api/v1/decks/all').then((res) => res.json()).then((data) => {
+    fetch('/api/v1/decks/public').then((res) => res.json()).then((data) => {
       setPublicDecks((_: any) => [ ...data.decks ])
     })
   }, [])

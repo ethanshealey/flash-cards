@@ -113,4 +113,16 @@
             margin-left: -0px !important;
         }
     }
+    #search {
+        width: 100% !important;
+    }
+    .result-list-item {
+        width: 100% !important;
+    }
+    #search-bar {
+        width: 100% !important;
+        input {
+            width: 50px !important;
+        }
+    }
 }

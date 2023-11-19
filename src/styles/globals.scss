@@ -314,7 +314,7 @@ html, body {
     flex-wrap: wrap;
 }
 
-.deck-list-item {
+.deck-list-item, .result-list-item {
     background-color: $bg;
     margin: 10px;
     padding-left: 10px;
@@ -389,6 +389,11 @@ html, body {
         box-shadow: 0 0 25px rgba(143,143,143,.1);
         opacity: 80%;
     }
+}
+
+.result-list-item {
+    width: calc(60vw - 50px) !important;
+    margin-left: -0px;
 }
 
 #back-btn {
@@ -878,7 +883,7 @@ button:disabled {
             width: 100%;
             display: flex;
             flex-direction: row;
-            
+            margin-bottom: 15px;
             input {
                 border: none;
                 color: $text;

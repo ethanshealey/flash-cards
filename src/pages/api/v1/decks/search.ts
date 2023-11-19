@@ -2,32 +2,57 @@
 import { db } from '@/firebase'
 import { collection, getDocs, or, query, where } from 'firebase/firestore'
 import type { NextApiRequest, NextApiResponse } from 'next'
-const {  Document } = require("flexsearch");
+import * as lunr from 'lunr'
 
 type Data = {
     response: string
 }
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
 
-    const { q } = req.query
+    const { q, email } = req.query
 
-    const searchDoc = new Document()
+    let dbresults: any[] = []
 
-    // const dbq = query(collection(db, 'Decks'), or(
-    //     where('public', '==', true), 
-    //     where('createdByEmail', '==', 'ethan.shealey@gmail.com')
-    // ))
+    const dbq = query(collection(db, 'Decks'), or(
+      where('public', '==', true), 
+      where('createdByEmail', '==', email ?? '')
+    ))
 
-    // getDocs(dbq).then((qs: any) => {
-    //     qs.forEach((doc: any) => {
-    //         //document?.add(doc.id, doc.data())
-    //     })
-    // })
+    await getDocs(dbq).then((qs: any) => {
 
-    return res.status(200).json({ response: `Tried to search for ${q}` })
+        qs.forEach((doc: any) => {
+          dbresults.push({ 
+            title: doc.data().title, 
+            cards: doc.data().cards.map((card: any) => card.front + ' ' + card.back), 
+            id: `${dbresults.length + 1}` ,
+            actual: { ...doc.data(), id: doc.id }
+          })
+        })
+    })
+
+    const idx = await lunr(async function(this: any) {
+
+      this.field('title')
+      this.field('cards')
+
+      for(let i = 0; i < dbresults.length; i++) {
+        this.add(dbresults[i])
+      }
+
+    })
+
+    const results = idx.search(q)
+    const resultSet = []
+
+    results.forEach((r: any) => {
+      const curr = dbresults.filter((d) => d.id === r.ref)[0]
+      resultSet.push(curr.actual)
+    })
+
+    return res.status(200).json({ response: resultSet })
 
 }

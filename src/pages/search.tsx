@@ -11,6 +11,8 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 import toast from 'react-hot-toast';
 import { AiOutlineSearch } from 'react-icons/ai' 
+import SearchResult from '@/components/SearchResult';
+import Spinner from '@/components/Spinner';
 
 type CreateType = {
     user: any
@@ -18,13 +20,25 @@ type CreateType = {
 
 const create = ({ user } : CreateType) => {
 
+    const [ isLoading, setIsLoading ] = useState<boolean>(false)
     const [ query, setQuery ] = useState<string>('')
+    const [ results, setResults ] = useState<Deck[]>([])
+
+    useEffect(() => {
+        setIsLoading(true)
+        fetch(`/api/v1/decks/all?email=${user.email}`).then((res) => res.json()).then((data) => {
+            setResults(data.decks)
+            setIsLoading(false)
+        })
+    }, [])
 
     const handleSearch = (e: any) => {
         if(e.key === 'Enter') {
+            setIsLoading(true)
             console.log('try and search for:', query)
-            fetch(`/api/v1/decks/search?q=${query}`).then((res) => res.text()).then((data) => {
-                console.log(data)
+            fetch(`/api/v1/decks/search?q=${query}&email=${user.email}`).then((res) => res.json()).then((data) => {
+                setResults(data.response)
+                setIsLoading(false)
             })
         }
     }
@@ -41,6 +55,15 @@ const create = ({ user } : CreateType) => {
                     <input id="search-bar-input" value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={handleSearch} placeholder='Search for a deck...' />
                     <button onClick={() => handleSearch({ key: 'Enter' })}><AiOutlineSearch /></button>
                 </div> 
+                {   !isLoading ? 
+                    results.map((deck: Deck) => (
+                        <SearchResult deck={deck} />
+                    )) : (
+                        <div style={{ width: "100%", display: "flex", justifyContent: "center", alignContent: "center" }}>
+                            <Spinner width={'50px'} />
+                        </div>
+                    )
+                }
             </div>
         </div>
     </div>
