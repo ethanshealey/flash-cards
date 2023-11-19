@@ -5,7 +5,12 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import lunr from 'lunr'
 
 type Data = {
-    response: string
+    response: any[]
+}
+
+type QueryType = {
+  q: string,
+  email: string
 }
 
 export default async function handler(
@@ -46,7 +51,7 @@ export default async function handler(
     })
 
     const results = idx.search(q)
-    const resultSet = []
+    const resultSet: any[] = []
 
     results.forEach((r: any) => {
       const curr = dbresults.filter((d) => d.id === r.ref)[0]
