@@ -18,7 +18,8 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
 
-    const { q, email } = req.query
+    const q: string = req.query.q as string
+    const email: string = req.query.email as string
 
     let dbresults: any[] = []
 
