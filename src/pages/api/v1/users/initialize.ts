@@ -18,7 +18,7 @@ export default async function handler(
 
     await addDoc(collection(db, "Users"), {
       email: u.user.email,
-      picture: `https://api.dicebear.com/7.x/identicon/svg?seed=${u.user.email}`,
+      picture: `https://api.dicebear.com/7.x/identicon/svg?seed=${u.user.email.replace(/[^a-zA-Z ]/g, "")}`,
       username: u.username
     })
 
