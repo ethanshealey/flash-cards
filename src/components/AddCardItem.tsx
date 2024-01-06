@@ -19,11 +19,11 @@ const AddCardItem = ({ index, term, definition, setTerm, setDefinition, deleteCa
         </div>   
         <div className='add-card-content'>
             <div className='term'>
-                <input value={term} onChange={(e) => setTerm(index, e.target.value)} />
+                <textarea value={term} onChange={(e) => setTerm(index, e.target.value)} />
                 <p>Term</p>
             </div>
             <div className='definition'>
-                <input value={definition} onChange={(e) => setDefinition(index, e.target.value)} />
+                <textarea value={definition} onChange={(e) => setDefinition(index, e.target.value)} />
                 <p>Definition</p>
             </div>
         </div> 
