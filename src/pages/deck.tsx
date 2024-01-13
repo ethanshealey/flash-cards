@@ -48,9 +48,8 @@ const DeckItem = ({ user }: DeckItemType) => {
     }, [params, user])
 
     const edit = () => {
-
-        const bDeck: string = encode(JSON.stringify(deck))
-        push(`/create?deck=${bDeck}`)
+        //const bDeck: string = encode(JSON.stringify(deck))
+        push(`/create?deck=${params.get('id')}`)
     }
 
     const getCurrentCard = () => deck ? deck?.cards[cardIndex] : undefined 

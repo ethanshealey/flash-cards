@@ -34,14 +34,16 @@ const create = ({ user } : CreateType) => {
   }, [])
 
   useEffect(() => {
-    const bDeck: string | null = query.get('deck')
-    if(bDeck) {
-      const editDeck: Deck = JSON.parse(decode(bDeck))
-      console.log(editDeck)
-      setCards((_: any) => editDeck.cards)
-      setPublicPrivate(editDeck.public)
-      setTitle(editDeck.title)
-      setDeckId(editDeck.id)
+    const deckId: string | null = query.get('deck')
+    if(deckId) {
+      fetch(`/api/v1/decks/${deckId}`).then((res) => res.json()).then((data) => {
+        console.log(data.deck)
+        if(data.deck.createdByEmail !== user.email) push('/')
+        setCards((_: any) => data.deck.cards)
+        setPublicPrivate(data.deck.public)
+        setTitle(data.deck.title)
+        setDeckId(data.deck.id)
+      })
     }
   }, [query])
 
