@@ -2,11 +2,12 @@ import React from 'react'
 
 type SpinnerType = {
     width: string,
+    thickness: string | undefined
 }
 
-const Spinner = ({ width }: SpinnerType) => {
+const Spinner = ({ width, thickness }: SpinnerType) => {
   return (
-    <div className='spinner' style={{ width: width, height: width }} />
+    <div className='spinner' style={{ width: width, height: width, border: `${thickness ? thickness : '3px'} solid rgba(255,255,255,.3)`, borderTopColor: "#fff" }} />
   )
 }
 

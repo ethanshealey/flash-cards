@@ -859,9 +859,7 @@ button:disabled {
 .spinner {
     margin-top: 5px;
     display: inline-block;
-    border: 3px solid rgba(255,255,255,.3);
     border-radius: 50%;
-    border-top-color: #fff;
     animation: spin 1s ease-in-out infinite;
     -webkit-animation: spin 1s ease-in-out infinite;
   }
@@ -939,4 +937,11 @@ button:disabled {
 }
 #deck-header {
     display: block !important;
+}
+
+#loading-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
