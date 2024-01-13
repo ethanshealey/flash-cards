@@ -2,7 +2,7 @@ import React from 'react'
 
 type SpinnerType = {
     width: string,
-    thickness: string | undefined
+    thickness?: string
 }
 
 const Spinner = ({ width, thickness }: SpinnerType) => {
