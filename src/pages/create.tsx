@@ -30,21 +30,20 @@ const create = ({ user } : CreateType) => {
 
   useEffect(() => {
     if(!user) push('/')
-    setIsLoading(false)
-  }, [])
-
-  useEffect(() => {
     const deckId: string | null = query.get('deck')
     if(deckId) {
       fetch(`/api/v1/decks/${deckId}`).then((res) => res.json()).then((data) => {
         console.log(data.deck)
         if(data.deck.createdByEmail !== user.email) push('/')
-        setCards((_: any) => data.deck.cards)
-        setPublicPrivate(data.deck.public)
-        setTitle(data.deck.title)
-        setDeckId(data.deck.id)
+        else {
+          setCards((_: any) => data.deck.cards)
+          setPublicPrivate(data.deck.public)
+          setTitle(data.deck.title)
+          setDeckId(data.deck.id)
+        }
       })
     }
+    setIsLoading(false)
   }, [query])
 
   const deleteCard = (idx: number) => {
