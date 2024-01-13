@@ -18,7 +18,7 @@ const DeckHeader = ({ user, title }: DeckHeaderType) => {
     return (
         <div id="header">
             <BiArrowBack id="back-btn" onClick={() => window.history.back()} />
-            <h1>{ title }</h1>
+            <h1 id="deck-header">{ title }</h1>
             <div id="header-btns">
                 <button id="menu-btn" onClick={() => setShowMenu(p => !p)}><GiHamburgerMenu /></button>
                 <div id="menu-btn-dropdown" className={ showMenu ? 'show' : 'hide' }>

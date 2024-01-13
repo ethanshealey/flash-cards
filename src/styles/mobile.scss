@@ -36,12 +36,12 @@
     #header {
         width: 100% !important;
         overflow: hidden !important;
-        span {
-            visibility: hidden !important;
-        }
-        &::before {
-            display: none !important;
-        }
+        // span {
+        //     visibility: hidden !important;
+        // }
+        // &::before {
+        //     display: none !important;
+        // }
     }
     .deck-list {
         justify-content: center !important;
