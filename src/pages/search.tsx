@@ -26,7 +26,7 @@ const create = ({ user } : CreateType) => {
 
     useEffect(() => {
         setIsLoading(true)
-        fetch(`/api/v1/decks/all?email=${user.email}`).then((res) => res.json()).then((data) => {
+        fetch(`/api/v1/decks/all?email=${user?.email ?? ''}`).then((res) => res.json()).then((data) => {
             setResults(data.decks)
             setIsLoading(false)
         })
@@ -57,7 +57,7 @@ const create = ({ user } : CreateType) => {
                 </div> 
                 {   !isLoading ? 
                     results.map((deck: Deck) => (
-                        <SearchResult deck={deck} />
+                        <SearchResult key={deck.id} deck={deck} />
                     )) : (
                         <div style={{ width: "100%", display: "flex", justifyContent: "center", alignContent: "center" }}>
                             <Spinner width={'50px'} />

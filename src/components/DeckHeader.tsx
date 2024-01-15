@@ -1,10 +1,7 @@
 import { useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { BiSolidUser, BiSearchAlt2, BiHomeAlt, BiArrowBack } from 'react-icons/bi'
-import { MdOutlineCreate, MdLogout } from 'react-icons/md'
-import { PiCardsBold } from 'react-icons/pi'
-import Link from 'next/link';
-import Deck from '@/types/Deck'
+import { BiArrowBack } from 'react-icons/bi'
+import Dropdown from './Dropdown'
 
 type DeckHeaderType = {
     user: any,
@@ -22,20 +19,7 @@ const DeckHeader = ({ user, title }: DeckHeaderType) => {
             <div id="header-btns">
                 <button id="menu-btn" onClick={() => setShowMenu(p => !p)}><GiHamburgerMenu /></button>
                 <div id="menu-btn-dropdown" className={ showMenu ? 'show' : 'hide' }>
-                    { 
-                        user ? <>
-                            <Link className="menu-btn-dropdown-item" href="/"><BiHomeAlt /> Home</Link>
-                            <Link className="menu-btn-dropdown-item" href="/profile"><BiSolidUser /> Account</Link>
-                            {/* <Link className="menu-btn-dropdown-item" href="/"><PiCardsBold /> Your Decks</Link> */}
-                            <Link className="menu-btn-dropdown-item" href="/create"><MdOutlineCreate /> Create Deck</Link>
-                            <Link className="menu-btn-dropdown-item" href="/search"><BiSearchAlt2 /> Search</Link>
-                            <hr />
-                            <Link className="menu-btn-dropdown-item warn-text" href="/logout"><MdLogout style={{ transform: 'rotate(180deg)' }} /> Sign Out</Link>
-                        </> : <>
-                            <Link className="menu-btn-dropdown-item"  href="/"><BiHomeAlt /> Home</Link>
-                            <Link className="menu-btn-dropdown-item"  href="/login"><MdLogout /> Log In</Link>
-                        </>
-                    }
+                    <Dropdown user={user} />
                 </div>
             </div>
         </div>
